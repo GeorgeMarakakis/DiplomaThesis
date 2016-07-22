@@ -37,12 +37,14 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  /*
   Serial.print("SPEEDair = ");
   Serial.print(SPEEDair,3);
   Serial.println();
   Serial.print("SPEEDwater = ");
   Serial.print(SPEEDwater,3);
   Serial.println();
+  */
   // rotates the servo motor from 15 to 165 degrees
   for(int i=15;i<=165;i++){  
       myServo.write(i);
@@ -53,17 +55,18 @@ void loop() {
       distanceVer = calculateDistanceVer();
       
       Serial.print(i); // Sends the current degree into the Serial Port
-      Serial.print(" degs - ");
+      //Serial.print(" degs - ");
       Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
-      Serial.print(" Hor: ");
+      //Serial.print(" Hor: ");
       Serial.print(distanceHor); // Sends the distance value into the Serial Port
-      Serial.print(" cm - Ver: ");
+      //Serial.print(" cm - Ver: ");
+      Serial.print("-"); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
       Serial.print(distanceVer);
-      Serial.print(" cm ");
+      //Serial.print(" cm ");
       Serial.print("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
-      Serial.println();
-      Serial.println();
-      delay(1000);//miliseconds - for testing
+      //Serial.println();
+      //Serial.println();
+      //delay(1000);//miliseconds - for testing
       }
       
   // Repeats the previous lines from 165 to 15 degrees
@@ -76,17 +79,18 @@ void loop() {
       distanceVer = calculateDistanceVer();
       
       Serial.print(i); // Sends the current degree into the Serial Port
-      Serial.print(" degs - ");
+      //Serial.print(" degs - ");
       Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
-      Serial.print(" Hor: ");
+      //Serial.print(" Hor: ");
       Serial.print(distanceHor); // Sends the distance value into the Serial Port
-      Serial.print(" cm - Ver: ");
+      //Serial.print(" cm - Ver: ");
+      Serial.print("-"); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
       Serial.print(distanceVer);
-      Serial.print(" cm ");
+      //Serial.print(" cm ");
       Serial.print("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
-      Serial.println();
-      Serial.println();
-      delay(1000);//miliseconds - for testing
+      //Serial.println();
+      //Serial.println();
+      //delay(1000);//miliseconds - for testing
       }
 }
 
@@ -102,9 +106,11 @@ int calculateDistanceHor(){
   delayMicroseconds(10);
   digitalWrite(trigPinHor, LOW);
   durationHor = pulseIn(echoPinHor, HIGH); // Reads the echoPinHor, returns the sound wave travel time in microseconds
+  /*
   Serial.print("Horizontal Duration(microsecs) = ");
   Serial.print(durationHor);
   Serial.println();
+  */
   distanceHor= durationHor*SPEEDair/2;
   return distanceHor;
 }
@@ -121,9 +127,11 @@ int calculateDistanceVer(){
   delayMicroseconds(10);
   digitalWrite(trigPinVer, LOW);
   durationVer = pulseIn(echoPinVer, HIGH); // Reads the echoPinVer, returns the sound wave travel time in microseconds
-  Serial.print("Vertical Duration(microsecs) = ");
-  Serial.print(durationVer);
+  /*
+  Serial.print("Horizontal Duration(microsecs) = ");
+  Serial.print(durationHor);
   Serial.println();
+  */
   distanceVer= durationVer*SPEEDair/2;
   return distanceVer;
 }
