@@ -1,2 +1,2 @@
 # DiplomaThesis
-Development of submersible sonar device for ROV
+Low Cost SONAR Device for Object Detection using Kalman Filtering Technique
